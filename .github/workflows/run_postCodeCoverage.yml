@@ -10,6 +10,7 @@ jobs:
     env:
        CODE_COV: 0
        CODE_COV_MAIN: 0
+       BRANCH_NAME: branch
     steps:
       - name: Fetch main branch code coverage report
         uses: actions/checkout@v2.0.0
@@ -24,6 +25,7 @@ jobs:
           fetch-depth: '1'
           lfs: 'false'
       - run: echo "CODE_COV= $(cat TestCoverageAnalyser/totalCoverage.txt)" >> $GITHUB_ENV
+      - run: echo "BRANCH_NAME = $GITHUB_REF##*/" >> $GITHUB_ENV
       - name: Create Coverage Comment
         uses: actions/github-script@v3
         with:
@@ -32,5 +34,5 @@ jobs:
                issue_number: context.issue.number,
                owner: context.repo.owner,
                repo: context.repo.repo,
-               body: '# Code Coverage Report\n | ${{ env.GITHUB_REF##*/ }} | Develop | \n --------------|--------- \n ${{ env.CODE_COV }} | ${{ env.CODE_COV_MAIN }}',
+               body: '# Code Coverage Report\n | ${{ env.BRANCH_NAME }} | Develop | \n --------------|--------- \n ${{ env.CODE_COV }} | ${{ env.CODE_COV_MAIN }}',
           })
