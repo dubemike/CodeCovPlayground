@@ -13,8 +13,10 @@ jobs:
           fetch-depth: '100'
           lfs: 'true'
         id: vars
-      - run: echo cat TestCoverageAnalyser/totalCoverage.txt
-      - run: ::set-output name=coverageReport::$(cat TestCoverageAnalyser/totalCoverage.txt)
+      - run: ls
+      - run: cat TestCoverageAnalyser/totalCoverage.txt
+      - run: echo ::set-output name=coverageReport::$(cat TestCoverageAnalyser/totalCoverage.txt)
+      - run: echo "::set-output name=coverageReport::$(cat TestCoverageAnalyser/totalCoverage.txt)"
       - uses: actions/github-script@v3
         with:
          script: |
@@ -24,3 +26,4 @@ jobs:
                repo: context.repo.repo,
                body: 'Code Coverage:' ${{ steps.vars.outputs.coverageReport }},
           })
+        run: echo ::set-output name=version::$(cat VERSION)
