@@ -14,9 +14,7 @@ jobs:
           fetch-depth: '100'
           lfs: 'true'
         id: vars
-      - run: |
-            $output= cat TestCoverageAnalyser/totalCoverage.txt
-            Write-Output "::set-output name=coveragereport::$output"
+      - run: echo '::set-output name=coverage_report::1234w'
       - name: Create Coverage Comment
         uses: actions/github-script@v3
         with:
@@ -25,6 +23,6 @@ jobs:
                issue_number: context.issue.number,
                owner: context.repo.owner,
                repo: context.repo.repo,
-               body: 'Code Coverage: ${{ steps.vars.outputs.coveragereport }}',
+               body: 'Code Coverage: ${{ steps.vars.outputs.coverage_report }}',
           })
-      - run: echo ${{ steps.vars.outputs.coveragereport }}
+      - run: echo ${{ steps.vars.outputs.coverage_report }}
