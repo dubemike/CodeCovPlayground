@@ -1,4 +1,4 @@
-name: Post Code Coverage Status 
+name: Post Code Coverage Status
 
 on:
   pull_request:
@@ -32,5 +32,9 @@ jobs:
                issue_number: context.issue.number,
                owner: context.repo.owner,
                repo: context.repo.repo,
-               body: 'Code Coverage: ${{ env.CODE_COV }} versus Main:  ${{ env.CODE_COV_MAIN }}',
+               body: '
+               # Code Coverage Report
+               | $GITHUB_REF | Develop |
+               ----------------|---------
+                ${{ env.CODE_COV }} | ${{ env.CODE_COV_MAIN }}',
           })
