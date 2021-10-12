@@ -1,4 +1,4 @@
-name: Post Code Coverage Status
+name: Post Code Coverage Status.
 
 on:
   pull_request:
@@ -26,4 +26,3 @@ jobs:
                repo: context.repo.repo,
                body: 'Code Coverage:' ${{ steps.vars.outputs.coverageReport }},
           })
-        run: echo ::set-output name=version::$(cat VERSION)
