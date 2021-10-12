@@ -18,11 +18,11 @@ jobs:
         lfs: 'true'
     - name: Fetch Current Code Coverage
       id: vars
-      run: echo ::set-output name=coverageReport::$(cat TestCoverageAnalyser/totalCoverage.txt)
-      - name: Comment on PR
-        uses: actions/github-script@v3
+    - run: echo ::set-output name=coverageReport::$(cat TestCoverageAnalyser/totalCoverage.txt)
+    - name: Comment on PR
+       uses: actions/github-script@v3
         with:
-          script: |
+         script: |
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
