@@ -1,4 +1,4 @@
-name: Run Post Code Coverage Status
+name: Post Code Coverage Status
 
 on:
   pull_request:
@@ -8,18 +8,18 @@ jobs:
   post_code_coverage:
     runs-on: ubuntu-latest
     steps:
-      id: vars
-    - uses: actions/checkout@v2.0.0
-      with:
-        fetch-depth: '100'
-        lfs: 'true'
-    - run: echo ::set-output name=coverageReport::$(cat TestCoverageAnalyser/totalCoverage.txt)
-    - uses: actions/github-script@v3
-      with:
-       script: |
-         github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'Code Coverage:' ${{ steps.vars.outputs.coverageReport }},
-         })
+      - uses: actions/checkout@v2.0.0
+        with:
+          fetch-depth: '100'
+          lfs: 'true'
+        id: vars
+      - run: echo ::set-output name=coverageReport::$(cat TestCoverageAnalyser/totalCoverage.txt)
+      - uses: actions/github-script@v3
+        with:
+         script: |
+          github.issues.createComment({
+               issue_number: context.issue.number,
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               body: 'Code Coverage:' ${{ steps.vars.outputs.coverageReport }},
+          })
