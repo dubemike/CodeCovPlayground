@@ -14,7 +14,9 @@ jobs:
           fetch-depth: '100'
           lfs: 'true'
         id: vars
-      - run: echo ::set-output name=coveragereport::$(cat TestCoverageAnalyser/totalCoverage.txt)
+      - run: |
+            $output= cat TestCoverageAnalyser/totalCoverage.txt
+            Write-Output "::set-output name=coveragereport::$output"
       - name: Create Coverage Comment
         uses: actions/github-script@v3
         with:
