@@ -1,8 +1,9 @@
 name: Run Post Code Coverage Status
 
 on:
-  check_suite:
-    type: [completed]
+  pull_request:
+    types: [opened, unlabeled, labeled, reopened, synchronize]
+
 
 
 jobs:
