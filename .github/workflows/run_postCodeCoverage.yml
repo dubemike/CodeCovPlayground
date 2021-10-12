@@ -16,7 +16,7 @@ jobs:
           fetch-depth: '100'
           lfs: 'true'
         id: report
-      - run: echo '400 >> env.CODE_COV'
+      - run: echo 'CODE_COV=400 >> $GITHUB_ENV'
       - name: Create Coverage Comment
         uses: actions/github-script@v3
         with:
