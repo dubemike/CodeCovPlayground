@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: '100'
           lfs: 'true'
-        id: vars
+        id: report
       - run: echo '::set-output name=coverage_report::1234w'
       - name: Create Coverage Comment
         uses: actions/github-script@v3
@@ -23,6 +23,6 @@ jobs:
                issue_number: context.issue.number,
                owner: context.repo.owner,
                repo: context.repo.repo,
-               body: 'Code Coverage: ${{ steps.vars.outputs.coverage_report }}',
+               body: 'Code Coverage: ${{ steps.report.outputs.coverage_report }}',
           })
-      - run: echo ${{ steps.vars.outputs.coverage_report }}
+      - run: echo 'output is ${{ steps.report.outputs.coverage_report }}'
