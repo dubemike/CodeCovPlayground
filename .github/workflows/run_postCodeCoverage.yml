@@ -9,13 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     env:
        CODE_COV: 0
+       CODE_COV_MAIN: 0
     steps:
+      - name: Fetch main branch code coverage report
+        uses: actions/checkout@v2.0.0
+        with:
+          fetch-depth: '1'
+          lfs: 'false'
+          ref: main
+      - run: echo "CODE_COV_MAIN= $(cat TestCoverageAnalyser/totalCoverage.txt)" >> $GITHUB_ENV
       - name: Fetch current code coverage report
         uses: actions/checkout@v2.0.0
         with:
-          fetch-depth: '100'
-          lfs: 'true'
-        id: report
+          fetch-depth: '1'
+          lfs: 'false'
       - run: echo "CODE_COV= $(cat TestCoverageAnalyser/totalCoverage.txt)" >> $GITHUB_ENV
       - name: Create Coverage Comment
         uses: actions/github-script@v3
@@ -25,5 +32,5 @@ jobs:
                issue_number: context.issue.number,
                owner: context.repo.owner,
                repo: context.repo.repo,
-               body: 'Code Coverage: ${{ env.CODE_COV }}',
+               body: 'Code Coverage: ${{ env.CODE_COV }} versus Main:  ${{ env.CODE_COV_MAIN }}',
           })
