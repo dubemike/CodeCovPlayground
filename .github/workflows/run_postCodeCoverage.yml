@@ -1,9 +1,9 @@
 name: Post Code Coverage Status
 
 on:
-  check_suite:
-    types: [success, completed]
-    
+  pull_request:
+    types: [opened, reopened, synchronize]
+
 jobs:
   post_code_coverage:
     runs-on: ubuntu-latest
