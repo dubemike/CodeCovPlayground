@@ -7,8 +7,6 @@
 
 import Foundation
 
-//print("Hello world")
-
 // we need to run xccov via the command line
 //xcrun xccov view --report --json Test.xcresult > report.json
 
@@ -19,7 +17,9 @@ let contents = try! FileManager.default.contentsOfDirectory(at: dir, includingPr
 //print(contents)
 
 let resultFiles = contents.filter({ $0.lastPathComponent.hasSuffix(".json")})//.map({ dir.appending($0) })
-//print(resultFiles)
+
+let codeCoverageFilePath = dir.appendingPathComponent("totalCoverage.txt", isDirectory: false)
+
 
 for result in resultFiles {
     guard let data = try? Data(contentsOf: result) else {
@@ -40,15 +40,26 @@ for result in resultFiles {
     let coverageSummedUp = sortedTargets.map(\.lineCoverage).reduce(0, +)
     let overallCoverage = coverageSummedUp / Double(sortedTargets.count)
     
-    let totalCoverage = "Total Coverage =  \(round(overallCoverage * 100))%"
-    print(totalCoverage)
+    let totalCoverage = "\(round(overallCoverage * 100))%"
+    print("Total Coverage \(totalCoverage)")
     print("============")
     for target in sortedTargets {
         print("Coverage for \(target.name) == \(round(target.lineCoverage * 100))%")
     }
     
     do {
-        try totalCoverage.write(to: dir.appendingPathComponent("totalCoverage.txt", isDirectory: false), atomically: true, encoding: String.Encoding.utf8)
+        if let data = FileManager.default.contents(atPath: codeCoverageFilePath.path) {
+            let existingCoverage = String(data: data, encoding: .utf8)
+         
+            if totalCoverage != existingCoverage {
+                try totalCoverage.write(to: codeCoverageFilePath, atomically: true, encoding: String.Encoding.utf8)
+            } else {
+                print("skipping updating the code coverage file")
+            }
+        } else {
+            try totalCoverage.write(to: codeCoverageFilePath, atomically: true, encoding: String.Encoding.utf8)
+        }
+
     } catch {
         print("failed to write total coverage to disk \(error)")
     }
