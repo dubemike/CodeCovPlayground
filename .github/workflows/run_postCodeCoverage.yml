@@ -24,7 +24,6 @@ jobs:
         with:
           fetch-depth: '1'
           lfs: 'false'
-      - run: echo "running on branch $GITHUB_HEAD_REF"
       - run: echo "CODE_COV= $(cat TestCoverageAnalyser/totalCoverage.txt)" >> $GITHUB_ENV
       - run: echo "BRANCH_NAME= $GITHUB_HEAD_REF" >> $GITHUB_ENV
       - name: Create Coverage Comment
