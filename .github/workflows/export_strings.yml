@@ -3,7 +3,7 @@ name: Export i18n Strings
 on:
   push:
     branches:
-    - 'main' 
+    - 'main'
 
 jobs:
   export_strings_pr:
@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Clone Create PR action
         uses: actions/checkout@v3
+        run: git checkout HEAD^
         with:
           ref: main
       - name: Run and commit changes
