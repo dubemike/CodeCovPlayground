@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Create PR action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: main
       - name: Run and commit changes
@@ -21,11 +21,10 @@ jobs:
       - name: Create pull request
         uses: gdcorp-action-public-forks/peter-evans-create-pull-request@master
         with:
-          GITHUB_TOKEN: ${{ secrets.CREATE_PR_TOKEN }}
-          head: ${{ github.ref }}
+          token: ${{ secrets.CREATE_PR_TOKEN }}
           base: test-branch-1
-          branch-suffix: random
-          branch: automated-demo-branch
+          branch-suffix: timestamp
+          branch: export-i18n-strings
           title: "BOT: Export Localized Strings"
           body: |
 
