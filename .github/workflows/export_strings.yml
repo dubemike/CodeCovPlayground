@@ -1,8 +1,6 @@
 name: Export i18n Strings
 
-on:
-  schedule:
-    - cron: "0 13 * * 3" # At 13:00 on every Wednesday.
+on: [push]
 
 jobs:
   export_strings_pr:
