@@ -14,15 +14,18 @@ jobs:
         run: |
          git config user.name "GitHub Actions"
          git config user.email noreply@github.com
-         echo  $GITHUB_WORKSPACE ls
+         echo  $GITHUB_WORKSPACE
+         ls
          touch demo-output.txt
-         echo  $GITHUB_WORKSPACE ls
+         ls
       - name: Create pull request
         uses: gdcorp-action-public-forks/create-pull-request@master
         with:
           GITHUB_TOKEN: ${{ secrets.CREATE_PR_TOKEN }}
           head: ${{ github.ref }}
           base: test-branch-1
+          branch-suffix: random
+          branch: automated-demo-branch
           title: "BOT: Export Localized Strings"
           body: |
 
