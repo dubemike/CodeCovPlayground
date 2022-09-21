@@ -23,7 +23,6 @@ jobs:
         with:
           token: ${{ secrets.CREATE_PR_TOKEN }}
           base: test-branch-1
-          branch-suffix: timestamp
           branch: export-i18n-strings
           title: "BOT: Export Localized Strings"
           body: |
