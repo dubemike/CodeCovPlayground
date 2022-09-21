@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Clone Create PR action
         uses: actions/checkout@v3
-        run: git checkout HEAD^
         with:
           ref: main
+        run: git checkout HEAD^
       - name: Run and commit changes
         run: |
          git config user.name "GitHub Actions"
