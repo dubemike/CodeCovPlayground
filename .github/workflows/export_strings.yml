@@ -19,7 +19,7 @@ jobs:
          touch demo-output.txt
          ls
       - name: Create pull request
-        uses: gdcorp-action-public-forks/create-pull-request@master
+        uses: gdcorp-action-public-forks/peter-evans-create-pull-request@master
         with:
           GITHUB_TOKEN: ${{ secrets.CREATE_PR_TOKEN }}
           head: ${{ github.ref }}
