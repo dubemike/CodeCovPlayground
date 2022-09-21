@@ -1,6 +1,9 @@
 name: Export i18n Strings
 
-on: [push]
+on:
+  push:
+    branches:
+    - 'main' 
 
 jobs:
   export_strings_pr:
