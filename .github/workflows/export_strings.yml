@@ -18,6 +18,7 @@ jobs:
          git config user.name "GitHub Actions"
          git config user.email noreply@github.com
          git branch --show-current
+         git merge origin/main -m "merged main into branch"
          echo  $GITHUB_WORKSPACE
          ls
          echo "the content of the text file" > demo-output.txt
