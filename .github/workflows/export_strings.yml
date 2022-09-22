@@ -12,12 +12,12 @@ jobs:
       - name: Clone Create PR action
         uses: actions/checkout@v3
         with:
-          ref: test-branch-1
+          ref: main
       - name: Run and commit changes
         run: |
          git config user.name "GitHub Actions"
          git config user.email noreply@github.com
-         git merge origin/main -m "merged main into branch"
+         git branch --show-current
          echo  $GITHUB_WORKSPACE
          ls
          echo "the content of the text file" > demo-output.txt
