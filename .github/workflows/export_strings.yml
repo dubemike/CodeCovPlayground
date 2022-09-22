@@ -22,6 +22,7 @@ jobs:
          ls
          echo "the content of the text file" > demo-output.txt
          ls
+         git add --all
          git commit -a -m "added files after running a script"
       - name: Create pull request
         uses: gdcorp-action-public-forks/peter-evans-create-pull-request@master
