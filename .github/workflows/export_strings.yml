@@ -11,13 +11,16 @@ jobs:
     steps:
       - name: Clone Create PR action
         uses: actions/checkout@v3
+          with:
+            ref: test-branch-1
       - name: Run and commit changes
         run: |
          git config user.name "GitHub Actions"
          git config user.email noreply@github.com
+         git merge origin/main -m "merged main into branch"
          echo  $GITHUB_WORKSPACE
          ls
-         touch demo-output.txt
+         echo "the content of the text file" > demo-output.txt
          ls
       - name: Create pull request
         uses: gdcorp-action-public-forks/peter-evans-create-pull-request@master
