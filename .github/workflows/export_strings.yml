@@ -2,7 +2,7 @@ name: Export i18n Strings
 
 on:
   pull_request:
-    types: [ labeled, synchronize, opened, reopened ]
+    types: [labeled, synchronize, opened, reopened]
 
 jobs:
   build:
