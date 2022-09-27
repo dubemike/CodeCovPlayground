@@ -5,7 +5,7 @@ on:
     types: [labeled, synchronize, opened, reopened]
 
 jobs:
-  export_i18n_strings:
+  export_strings_pr:
     build:
       if: contains(github.event.pull_request.labels.*.name, 'new strings')
       runs-on: ubuntu-latest
