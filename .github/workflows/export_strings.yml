@@ -1,18 +1,16 @@
 name: Export i18n Strings
 
 on:
-  push:
-    branches:
-    - 'main'
+  pull_request:
+    types: [ labeled ]
 
 jobs:
-  export_strings_pr:
+  build:
+    if: ${{ github.event.label.name == 'new strings' }}
     runs-on: ubuntu-latest
     steps:
       - name: Clone Create PR action
         uses: actions/checkout@v3
-        with:
-          ref: main
       - name: Run and commit changes
         run: |
          git config user.name "GitHub Actions"
@@ -20,24 +18,24 @@ jobs:
          git branch --show-current
          echo  $GITHUB_WORKSPACE
          ls
-         echo "the content of the text file" > demo-output.txt
-         ls
+         echo "the content of the text file is now" > demo2-output.txt
+         echo "the github context is $GITHUB_CONTEXT"
          git add --all
          git commit -a -m "added files after running a script"
       - name: Create pull request
         uses: gdcorp-action-public-forks/peter-evans-create-pull-request@master
         with:
           token: ${{ secrets.CREATE_PR_TOKEN }}
-          base: test-branch-1
-          branch: export-i18n-strings
-          title: "BOT: Export Localized Strings"
+          branch: patch/export-i18n-strings
+          branch-suffix: short-commit-hash
+          title: "🩹 PATCH: Export Localized Strings"
           body: |
 
             This is an automatic workflow to export our localized strings.
+            As a PATCH-PR, its your responsibility as the orignal author to merge / reject changes as you see fit.
 
             # What's next?
             - [ ] Check the diff of this pull request, to verify that the export strings was run successfully and that there are new strings to export.
-            - [ ] Assign yourself to the PR
-            - [ ] Rename this PR and remove the `BOT:` prefix so folks know it can be merged.
+            - [ ] Check to make sure the base branch is correct and approve and merge.
             - [ ] Consider automating any one of these steps ☝️ to help the next developer that needs to do this.
           labels: automated
