@@ -3,6 +3,4 @@ github.api.add_labels_to_an_issue("dubemike/CodeCovPlayground", github.pr_json["
 project_repo = github.pr_json["base"]["repo"]
 
 warn("The repo is called "\
-       "#{project_repo}'s behavior.",
-       :sticky => false)
-end
+       "#{project_repo}'s behavior.")
