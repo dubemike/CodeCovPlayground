@@ -1,3 +1,4 @@
 # XcodeTestCoverageAnalyser
 
-A description of this package.
+A simple description of this package. 
+
