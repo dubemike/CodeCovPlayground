@@ -19,6 +19,10 @@
 		703255B426FA29510005E147 /* CodeCoverageExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703255B326FA29510005E147 /* CodeCoverageExampleTests.swift */; };
 		703255BE26FA29510005E147 /* CodeCoverageExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703255BD26FA29510005E147 /* CodeCoverageExampleUITests.swift */; };
 		703255C026FA29510005E147 /* CodeCoverageExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703255BF26FA29510005E147 /* CodeCoverageExampleUITestsLaunchTests.swift */; };
+		70EC87DE29BF6DEE000AA656 /* Dangerfile in Resources */ = {isa = PBXBuildFile; fileRef = 70EC87DC29BF6DED000AA656 /* Dangerfile */; };
+		70EC87DF29BF6DEE000AA656 /* Gemfile in Resources */ = {isa = PBXBuildFile; fileRef = 70EC87DD29BF6DED000AA656 /* Gemfile */; };
+		70EC87E329BF6E79000AA656 /* run_danger.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70EC87E129BF6E79000AA656 /* run_danger.yml */; };
+		70EC87E429BF6E79000AA656 /* export_strings.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70EC87E229BF6E79000AA656 /* export_strings.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,10 @@
 		703255B926FA29510005E147 /* CodeCoverageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeCoverageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		703255BD26FA29510005E147 /* CodeCoverageExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoverageExampleUITests.swift; sourceTree = "<group>"; };
 		703255BF26FA29510005E147 /* CodeCoverageExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCoverageExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		70EC87DC29BF6DED000AA656 /* Dangerfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dangerfile; sourceTree = "<group>"; };
+		70EC87DD29BF6DED000AA656 /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
+		70EC87E129BF6E79000AA656 /* run_danger.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = run_danger.yml; sourceTree = "<group>"; };
+		70EC87E229BF6E79000AA656 /* export_strings.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = export_strings.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,9 @@
 		7032559026FA294D0005E147 = {
 			isa = PBXGroup;
 			children = (
+				70EC87E029BF6E79000AA656 /* workflows */,
+				70EC87DC29BF6DED000AA656 /* Dangerfile */,
+				70EC87DD29BF6DED000AA656 /* Gemfile */,
 				70144CB726FB5540001DD988 /* TestCoverageAnalyser */,
 				7032559B26FA294D0005E147 /* CodeCoverageExample */,
 				703255B226FA29510005E147 /* CodeCoverageExampleTests */,
@@ -132,6 +143,16 @@
 				703255BF26FA29510005E147 /* CodeCoverageExampleUITestsLaunchTests.swift */,
 			);
 			path = CodeCoverageExampleUITests;
+			sourceTree = "<group>";
+		};
+		70EC87E029BF6E79000AA656 /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				70EC87E129BF6E79000AA656 /* run_danger.yml */,
+				70EC87E229BF6E79000AA656 /* export_strings.yml */,
+			);
+			name = workflows;
+			path = .github/workflows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,8 +259,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EC87E329BF6E79000AA656 /* run_danger.yml in Resources */,
+				70EC87DF29BF6DEE000AA656 /* Gemfile in Resources */,
 				703255A926FA29500005E147 /* LaunchScreen.storyboard in Resources */,
 				703255A626FA29500005E147 /* Assets.xcassets in Resources */,
+				70EC87DE29BF6DEE000AA656 /* Dangerfile in Resources */,
+				70EC87E429BF6E79000AA656 /* export_strings.yml in Resources */,
 				703255A426FA294D0005E147 /* Main.storyboard in Resources */,
 				70144CB826FB5540001DD988 /* TestCoverageAnalyser in Resources */,
 			);
