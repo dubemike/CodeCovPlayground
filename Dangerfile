@@ -1,2 +1,2 @@
 localization_label = "Introduces localized Strings"
-github.add_label(localization_label)
+git.add_label(localization_label)
